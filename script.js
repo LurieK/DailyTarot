@@ -1,8 +1,8 @@
-require('dotenv').config();
+// require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
+// const API_KEY = process.env.API_KEY;
 
-console.log(API_KEY)
+// console.log(API_KEY)
 
 
 import { cards } from './cards_array.js';
@@ -41,31 +41,45 @@ dropDown.addEventListener("change", function () {
   getResponse(selectValue);
 });
 
+// async function getResponse(card) {
+//   const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       "content-type": "application/json",
+//       "X-RapidAPI-Key": API_KEY,
+//       "X-RapidAPI-Host": "chatgpt-ai-chat-bot.p.rapidapi.com",
+//     },
+//     body: JSON.stringify({
+//       query: `You are a expert Tarot reader.  I will give you a card and you will tell me what it means as a prediction
+//         for the day. Please avoid negative readings and aim to inspire me with the meaning of the card. The card is the ${card}.`,
+//     }),
+//   };
+//   displayLoading();
+//   try {
+//     const response = await fetch(url, options);
+//     const result = await response.text();
+//     const resultObj = JSON.parse(result);
+//     const resultText = resultObj.response;
+//     displayMeaning(resultText);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
 async function getResponse(card) {
-  const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
-  const options = {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "X-RapidAPI-Key": API_KEY,
-      "X-RapidAPI-Host": "chatgpt-ai-chat-bot.p.rapidapi.com",
-    },
-    body: JSON.stringify({
-      query: `You are a expert Tarot reader.  I will give you a card and you will tell me what it means as a prediction
-        for the day. Please avoid negative readings and aim to inspire me with the meaning of the card. The card is the ${card}.`,
-    }),
-  };
+  const url = `http://localhost:3000/tarot?card=${card}`;
   displayLoading();
   try {
-    const response = await fetch(url, options);
-    const result = await response.text();
-    const resultObj = JSON.parse(result);
-    const resultText = resultObj.response;
+    const response = await fetch(url);
+    const result = await response.json();
+    const resultText = result.response;
     displayMeaning(resultText);
   } catch (error) {
     console.error(error);
   }
 }
+
 
 function displayMeaning(meaning) {
   const windowHeight = window.innerHeight;
