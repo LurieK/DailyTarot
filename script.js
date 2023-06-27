@@ -1,3 +1,10 @@
+require('dotenv').config();
+
+const API_KEY = process.env.API_KEY;
+
+console.log(API_KEY)
+
+
 import { cards } from './cards_array.js';
   
 const button = document.querySelector(".button");
@@ -13,7 +20,7 @@ button.addEventListener("click", function () {
 
   const cardImg = cardChoice.querySelector("img");
   cardImg.addEventListener("load", function () {
-    cardChoice.scrollIntoView({
+    cardMeaning.scrollIntoView({
       behavior: "smooth",
       block: "end",
     });
@@ -40,7 +47,7 @@ async function getResponse(card) {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "526d114da5mshd11026488d6ba9dp15cf91jsn42c0b1394840",
+      "X-RapidAPI-Key": API_KEY,
       "X-RapidAPI-Host": "chatgpt-ai-chat-bot.p.rapidapi.com",
     },
     body: JSON.stringify({
