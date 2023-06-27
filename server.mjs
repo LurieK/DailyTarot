@@ -1,10 +1,14 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import fetch from 'node-fetch';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
 
+app.use(cors());
+
+const API_KEY = process.env.API_KEY;
 app.get('/tarot', async (req, res)=>{
     const {card} = req.query; 
     const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
@@ -31,3 +35,8 @@ app.get('/tarot', async (req, res)=>{
     }
 }
 );
+
+const port = 5500; 
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

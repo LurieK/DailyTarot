@@ -68,7 +68,7 @@ dropDown.addEventListener("change", function () {
 // }
 
 async function getResponse(card) {
-  const url = `http://localhost:3000/tarot?card=${card}`;
+  const url = `http://localhost:5500/tarot?card=${card}`;
   displayLoading();
   try {
     const response = await fetch(url);
