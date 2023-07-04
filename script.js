@@ -34,13 +34,18 @@ dropDown.addEventListener("change", function () {
   getResponse(selectValue);
 });
 
+
+require('dotenv').config();
+
+const api_key = process.env.API_KEY;
+
 async function getResponse(card) {
   const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
   const options = {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "526d114da5mshd11026488d6ba9dp15cf91jsn42c0b1394840",
+      "X-RapidAPI-Key": api_key,
       "X-RapidAPI-Host": "chatgpt-ai-chat-bot.p.rapidapi.com",
     },
     body: JSON.stringify({
