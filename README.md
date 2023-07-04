@@ -1,6 +1,6 @@
 # Daily Tarot
 
-This is a web application that allows users to select a tarot card from a dropdown menu or to have one randomly selected and then receive a prediction for the day based on the meaning of that card. The predictions are generated using the OpenAI Chat GPT API, with the requests to the API handled server-side in an Express.js application (server.mjs). The server-side application is asynchronous, using JavaScript's async/await syntax for handling promises. The API key for the OpenAI service is securely stored in a .env file and accessed via the dotenv package. This web application is deployed on Vercel.
+This is a web application that allows users to select a tarot card from a dropdown menu or to have one randomly selected and then receive a prediction for the day based on the meaning of that card. The predictions are generated using the **OpenAI Chat GPT API**, with the requests to the API handled server-side in an **Express.js** application (server.mjs). The server-side application is **asynchronous, using JavaScript's async/await syntax** for handling promises. The API key for the OpenAI service is securely stored in a .env file and accessed via the dotenv package. This web application is deployed on Vercel.
 
 ## How to Use
 ### Select My Card
