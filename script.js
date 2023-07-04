@@ -35,30 +35,14 @@ dropDown.addEventListener("change", function () {
 });
 
 
-require('dotenv').config();
-
-const api_key = process.env.API_KEY;
-
 async function getResponse(card) {
-  const url = "https://chatgpt-ai-chat-bot.p.rapidapi.com/ask";
-  const options = {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "X-RapidAPI-Key": api_key,
-      "X-RapidAPI-Host": "chatgpt-ai-chat-bot.p.rapidapi.com",
-    },
-    body: JSON.stringify({
-      query: `You are a expert Tarot reader.  I will give you a card and you will tell me what it means as a prediction
-        for the day. Please avoid negative readings and aim to inspire me with the meaning of the card. The card is the ${card}.`,
-    }),
-  };
+  const url = `http://localhost:5500/tarot?card=${card}`;
+
   displayLoading();
   try {
-    const response = await fetch(url, options);
-    const result = await response.text();
-    const resultObj = JSON.parse(result);
-    const resultText = resultObj.response;
+    const response = await fetch(url);
+    const result = await response.json();
+    const resultText = result.response;
     displayMeaning(resultText);
   } catch (error) {
     console.error(error);
