@@ -4,6 +4,7 @@ const button = document.querySelector(".button");
 const cardChoice = document.querySelector(".card-choice");
 const cardMeaning = document.getElementById("card-meaning");
 
+//random card
 button.addEventListener("click", function () {
   let randomIndex = Math.floor(Math.random() * cards.length);
   let randomCard = cards[randomIndex];
@@ -23,7 +24,6 @@ button.addEventListener("click", function () {
 });
 
 //dropdown
-
 const dropDown = document.querySelector(".mycard");
 
 dropDown.addEventListener("change", function () {
@@ -34,7 +34,7 @@ dropDown.addEventListener("change", function () {
   getResponse(selectValue);
 });
 
-
+//API
 async function getResponse(card) {
   const url = `http://localhost:5500/tarot?card=${card}`;
 
@@ -55,6 +55,7 @@ function displayMeaning(meaning) {
   cardMeaning.innerHTML = dailyReading;
 }
 
+//load spiral
 function displayLoading() {
   cardMeaning.innerHTML = '<div class="spinner"></div>';
 }
