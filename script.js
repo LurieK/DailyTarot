@@ -14,7 +14,7 @@ button.addEventListener("click", function () {
 
   const cardImg = cardChoice.querySelector("img");
   cardImg.addEventListener("load", function () {
-    cardChoice.scrollIntoView({
+    cardMeaning.scrollIntoView({
       behavior: "smooth",
       block: "end",
     });
