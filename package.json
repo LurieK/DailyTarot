@@ -1,5 +1,17 @@
 {
-    "type": "module"
-
-  }
-  
+  "name": "daily-tarot",
+  "version": "1.0.0",
+  "description": "A daily tarot card app",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "nodemon server.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  },
+  "type": "module"
+}
